@@ -1,0 +1,57 @@
+4.1.2. Concatenate operation on Single Linked List
+03:15
+
+
+
+
+
+Write a menu driven C program that implements singly linked list for the following operations:
+
+Create
+Display
+Concatenate
+
+Sample Test Cases
+
+Explorer
+
+SingleLinkedList.c
+
+
+AllOperations.c
+#include<stdio.h>
+#include<stdlib.h>
+
+#include "AllOperations.c"
+int main() {
+    NODE list1 = NULL, list2 = NULL;
+    int choice, x;
+
+    while (1) {
+        printf("1. Create SLL1\n");
+        printf("2. Create SLL2\n");
+        printf("3. Display SLL1\n");
+        printf("4. Display SLL2\n");
+        printf("5. Concatenation\n");
+        printf("6. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter elements for SLL1 (-1 to end): ");
+                scanf("%d", &x);
+                while (x != -1) {
+                    list1 = addNode(list1, x);
+                    scanf("%d", &x);
+                }
+                break;
+            case 2:
+                printf("Enter elements for SLL2 (-1 to end): ");
+                scanf("%d", &x);
+                while (x != -1) {
+                    list2 = addNode(list2, x);
+                    scanf("%d", &x);
+                }
+                break;
+            case 3:
