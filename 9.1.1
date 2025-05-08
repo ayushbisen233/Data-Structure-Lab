@@ -1,0 +1,51 @@
+9.1.1. Implementation of Depth First Search
+07:38
+
+
+
+
+
+Write a C program to perform Depth First Search (DFS) traversal on a graph.
+
+
+Sample Test Cases
+
+Explorer
+
+GraphDFS.c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int vertex;
+    struct node *next;
+};
+
+typedef struct node *GNODE;
+
+GNODE graph[20];      // Adjacency list
+int visited[20];      // Visited array
+
+void DFS(int v) {
+    GNODE temp;
+    visited[v] = 1;
+    printf("%d\n", v);
+    temp = graph[v];
+    while (temp != NULL) {
+        if (!visited[temp->vertex]) {
+            DFS(temp->vertex);
+        }
+        temp = temp->next;
+    }
+}
+
+void main() {
+    int n, E, i, s, d, v;
+    GNODE q, p;
+
+    // Initialize the graph
+    for (i = 0; i < 20; i++) {
+        graph[i] = NULL;
+    }
+
+    printf("Enter no of vertices: ");
