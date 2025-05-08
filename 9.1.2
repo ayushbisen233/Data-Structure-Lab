@@ -1,0 +1,51 @@
+9.1.2. Implementation of Breadth First Search
+10:38
+
+
+
+
+
+Write a C program to perform Breadth First Search (BFS) traversal on a graph.
+
+
+Sample Test Cases
+
+Explorer
+
+GraphsBFS.c
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX 99
+ //#include <stdio.h>
+//#include <stdlib.h>
+#//define MAX 100
+struct node {
+    int vertex;
+    struct node* next;
+};
+typedef struct node* GNODE;
+GNODE graph[MAX]; // Adjacency list
+int visited[MAX]; // Visited array
+int queue[MAX];   // Queue array
+int front = -1, rear = -1;
+void enqueue(int val) {
+    if (rear == MAX - 1)
+        return;
+    if (front == -1)
+        front = 0;
+    queue[++rear] = val;
+}
+int dequeue() {
+    if (front == -1 || front > rear)
+        return -1;
+    return queue[front++];
+}
+void BFS(int v) {
+    GNODE temp;
+    visited[v] = 1;
+    enqueue(v);
+    while (front <= rear) {
+        int curr = dequeue();
+        printf("%d\n", curr);
+        temp = graph[curr];
+        while (temp != NULL) {
