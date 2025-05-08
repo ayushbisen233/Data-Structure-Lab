@@ -1,0 +1,53 @@
+5.1.2. Circular linked list operations create and concatenate
+15:12
+
+
+
+
+
+Write a menu-driven program that implements a circular linked list for the following operations:
+
+Create two lists (list1 to list2 and list2 to list1)
+Concatenate two lists
+
+Sample Test Cases
+
+Explorer
+
+Cll_Concate.c
+#include <stdio.h>
+#include <stdlib.h>
+
+// write your code here 
+typedef struct Node {
+int data;
+struct Node* next;
+}Node;
+typedef Node* NODE;
+NODE insertEnd(NODE head,int data){
+	NODE newNode = (NODE)malloc(sizeof(NODE));
+	newNode->data=data;
+	newNode->next=newNode;
+
+	if(head==NULL)
+		return newNode;
+	NODE temp=head;
+	while(temp->next!=head)
+		temp=temp->next;
+	temp->next=newNode;
+	newNode->next=head;
+	return head;
+}
+void displayList(NODE head){
+	if(head==NULL){
+		printf("Circular Linked List is empty\n");
+		return;
+	}
+	NODE temp=head;
+	do{
+		printf("%d ",temp->data);
+	temp=temp->next;
+	}while(temp!=head);
+	printf("\n");
+}
+NODE concatenateLists(NODE head1,NODE head2){
