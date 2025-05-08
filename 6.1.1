@@ -1,0 +1,76 @@
+6.1.1. Doubly linked list Create, insert, delete and reverse operations
+22:02
+
+
+
+
+
+Write a C program to implement a menu-driven application that uses a doubly linked list to perform the following operations:
+
+
+
+Operations:
+
+Create and Insert: Add a number to the doubly linked list.
+Delete: Remove a specific number from the doubly linked list.
+Display: Print the elements of the doubly linked list in order.
+Reverse: Reverse the order of the doubly linked list.
+Exit: The program should terminate when the user chooses this option.
+
+
+Input Format:
+
+The first line of input reads an integer between 0 and 4, representing the chosen operation.
+1: Insert a number. Enter the number to insert when prompted.
+2: Delete a number. Enter the number to delete when prompted.
+3: Display the current elements in the list.
+4: Reverse the list.
+0: Exit the program.
+
+
+Output Format:
+
+The output reads and display appropriate messages for operations performed:
+List elements after insertion, deletion, or reversal.A message when attempting to delete a non-existent number.
+
+Sample Test Cases
+
+Explorer
+
+Dll_Ins_Operations.c
+#include <stdio.h>
+#include <stdlib.h>
+struct Node{
+int data;
+struct Node* prev;
+struct Node* next;
+};
+struct Node* head=NULL;
+struct Node* tail=NULL;
+void insert(int data){
+	struct Node* newNode = (struct Node*)malloc(sizeof( struct Node));
+	newNode->data=data;
+	newNode->next=NULL;
+	newNode->prev=NULL;
+	if (head==NULL){
+		newNode->prev=NULL;
+		head=newNode;
+		tail=newNode;
+	}
+	else{
+		struct Node* temp=head;
+		while(temp->next!=NULL)
+		{
+			temp=temp->next;
+		}
+		temp->next=newNode;
+		newNode->prev=temp;
+		tail=newNode;
+	}
+}
+void remov(int data){
+	struct Node* temp=head;
+	while(temp!=NULL){
+		if(temp->data==data){
+			if(temp->prev!=NULL){
+				temp->prev->next=temp->next;
