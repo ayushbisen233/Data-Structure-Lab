@@ -1,0 +1,53 @@
+8.1.1. Graph implementation - Adjacency list Directed graph
+38:54
+
+
+
+
+
+Implementation of directed graph and its operations using adjacent lists.
+
+Sample Test Cases
+
+Explorer
+
+GraphMain3.c
+
+
+GraphsAdjacencyListDirectedGraph.c
+#include<stdio.h>
+#include<stdlib.h>
+
+#define MAX 100
+
+typedef struct node {
+	int vertex;
+	struct node *next;
+} *GNODE;
+
+GNODE graph[MAX];
+void insertVertex(int *N);
+void insertEdge(int *N);
+void deleteVertex(int *N);
+void deleteEdge(int *N);
+void print(int *N);
+// Function to insert a new vertex
+void insertVertex(int *N) {
+	(*N)++;
+	graph[*N] = NULL;
+	printf("Vertex inserted: %d\n", *N);
+}
+
+// Insert Edge
+ void insertEdge(int *N) {
+	int s, d;
+	GNODE q, p;
+	printf("Enter the source vertex of the edge : ");
+	scanf("%d", &s);
+	printf("Enter the destination vertex of the edge : ");
+	scanf("%d", &d);
+	if (s > *N || d > *N || s <= 0 || d <= 0) {
+		printf("Invalid vertex.\n");
+		return;
+	}
+	q = (GNODE)malloc(sizeof(struct node));
