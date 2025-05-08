@@ -1,0 +1,46 @@
+3.1.1. Write a C program to Sort given elements using Merge sort
+18:39
+
+
+
+
+
+Write a program to sort (Ascending order) the given elements using merge sort technique.
+
+At the time of execution, the program should print the message on the console as:
+Enter array size : 
+For example, if the user gives the input as:
+Enter array size : 5
+Next, the program should print the following message on the console as:
+Enter 5 elements : 
+if the user gives the input as:
+Enter 5 elements : 34 67 12 45 22
+then the program should print the result as:
+Before sorting the elements are : 34 67 12 45 22 
+After sorting the elements are : 12 22 34 45 67 
+Note: Do use the printf() function with a newline character (\n).
+
+Sample Test Cases
+
+Explorer
+
+MergeSortMain.c
+
+
+MergeSortFunctions.c
+#include <stdio.h>
+#include "MergeSortFunctions.c"
+void main() {
+	int arr[15], i, n;
+	printf("Enter array size : ");
+	scanf("%d", &n);
+	printf("Enter %d elements : ", n);
+	for (i = 0; i < n; i++) {
+		scanf("%d", &arr[i]);
+	}
+	printf("Before sorting the elements are : ");
+	display(arr, n);
+	splitAndMerge(arr, 0, n - 1);
+	printf("After sorting the elements are : ");
+	display(arr, n);
+}
