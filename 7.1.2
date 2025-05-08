@@ -1,0 +1,60 @@
+7.1.2. Operations on BST
+12:07
+
+
+
+
+
+Write a program to create a binary search tree of integers and perform the following operations using linked list.
+
+Insert a node
+In-order traversal
+Pre-order traversal
+Post-order traversal
+Search an element
+Exit
+
+Sample Test Cases
+
+Explorer
+
+BinarySearchTree.c
+
+
+InsertAndTraversals.c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int data;
+    struct node *left, *right;
+};
+
+typedef struct node *BSTNODE;
+
+// Function to create a new node
+BSTNODE newNodeInBST(int item) {
+    BSTNODE temp = (BSTNODE)malloc(sizeof(struct node));
+    temp->data = item;
+    temp->left = temp->right = NULL;
+    return temp;
+}
+
+// Function to insert a node in BST
+BSTNODE insertNodeInBST(BSTNODE node, int ele) {
+    if (node == NULL) {
+        printf("Successfully inserted.\n");
+        return newNodeInBST(ele);
+    }
+    if (ele < node->data) {
+        node->left = insertNodeInBST(node->left, ele);
+    } else if (ele > node->data) {
+        node->right = insertNodeInBST(node->right, ele);
+    }
+    return node;
+}
+
+// Function to perform in-order traversal
+void inorderInBST(BSTNODE root) {
+    if (root != NULL) {
+        inorderInBST(root->left);
